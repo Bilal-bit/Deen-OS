@@ -16,12 +16,13 @@ interface SalahCompletionChartProps {
 export default function SalahCompletionChart({ logs }: SalahCompletionChartProps) {
   const totalDays = logs.length || 1;
 
+  const prayed = (v: unknown) => v === 'on_time' || v === 'late' || v === true;
   const data = [
-    { name: 'Fajr', value: Math.round((logs.filter((l) => l.fajr).length / totalDays) * 100), fill: '#10B981' },
-    { name: 'Zuhr', value: Math.round((logs.filter((l) => l.zuhr).length / totalDays) * 100), fill: '#34D399' },
-    { name: 'Asr', value: Math.round((logs.filter((l) => l.asr).length / totalDays) * 100), fill: '#22D3EE' },
-    { name: 'Maghrib', value: Math.round((logs.filter((l) => l.maghrib).length / totalDays) * 100), fill: '#6EE7B7' },
-    { name: 'Isha', value: Math.round((logs.filter((l) => l.isha).length / totalDays) * 100), fill: '#A7F3D0' },
+    { name: 'Fajr', value: Math.round((logs.filter((l) => prayed(l.fajr)).length / totalDays) * 100), fill: '#10B981' },
+    { name: 'Dhuhr', value: Math.round((logs.filter((l) => prayed(l.dhuhr)).length / totalDays) * 100), fill: '#34D399' },
+    { name: 'Asr', value: Math.round((logs.filter((l) => prayed(l.asr)).length / totalDays) * 100), fill: '#22D3EE' },
+    { name: 'Maghrib', value: Math.round((logs.filter((l) => prayed(l.maghrib)).length / totalDays) * 100), fill: '#6EE7B7' },
+    { name: 'Isha', value: Math.round((logs.filter((l) => prayed(l.isha)).length / totalDays) * 100), fill: '#A7F3D0' },
   ];
 
   return (

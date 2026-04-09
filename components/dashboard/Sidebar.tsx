@@ -21,6 +21,13 @@ const navSections: NavSection[] = [
     ],
   },
   {
+    title: 'Salah',
+    items: [
+      { href: '/prayer-times', label: 'Prayer Times', icon: '🕐' },
+      { href: '/qaza', label: 'Qaza Tracker', icon: '📋' },
+    ],
+  },
+  {
     title: 'Ibaadat',
     items: [
       { href: '/ibaadat', label: 'Ibaadat Hub', icon: '🕌' },

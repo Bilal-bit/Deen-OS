@@ -17,7 +17,7 @@ export default function ShareScoreCard({ log }: ShareScoreCardProps) {
 
   if (!log) return null;
 
-  const salahCount = (['fajr', 'zuhr', 'asr', 'maghrib', 'isha'] as const).filter((s) => log[s]).length;
+  const salahCount = (['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'] as const).filter((s) => log[s]).length;
   const habitCount = (['water', 'sleep', 'exercise', 'quran'] as const).filter((h) => log[h]).length;
 
   const handleShare = async () => {

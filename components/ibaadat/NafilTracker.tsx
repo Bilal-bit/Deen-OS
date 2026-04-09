@@ -3,7 +3,7 @@
 import Card from '@/components/ui/Card';
 import Toggle from '@/components/ui/Toggle';
 import Skeleton from '@/components/ui/Skeleton';
-import { DailyLog, NafilName } from '@/types';
+import { DailyLog, ToggleField } from '@/types';
 import { useLogStore } from '@/stores/logStore';
 
 interface NafilTrackerProps {
@@ -11,7 +11,7 @@ interface NafilTrackerProps {
   loading: boolean;
 }
 
-const nafilList: { name: NafilName; label: string; icon: string; time: string }[] = [
+const nafilList: { name: ToggleField; label: string; icon: string; time: string }[] = [
   { name: 'tahajjud', label: 'Tahajjud', icon: '🌙', time: 'Last third of night' },
   { name: 'ishraq', label: 'Ishraq', icon: '🌅', time: '15-20 min after sunrise' },
   { name: 'duha', label: 'Duha (Chasht)', icon: '☀️', time: 'Mid-morning' },

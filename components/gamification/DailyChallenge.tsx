@@ -18,15 +18,17 @@ interface Challenge {
   bonus: number;
 }
 
+const prayed = (v: string | boolean | undefined) => v === 'on_time' || v === 'late';
+
 const challengePool: Challenge[] = [
-  { id: 'all-salah', title: 'Perfect Salah', description: 'Pray all 5 salah today', icon: '🕌', check: (l) => l.fajr && l.zuhr && l.asr && l.maghrib && l.isha, bonus: 10 },
+  { id: 'all-salah', title: 'Perfect Salah', description: 'Pray all 5 salah today', icon: '🕌', check: (l) => prayed(l.fajr) && prayed(l.dhuhr) && prayed(l.asr) && prayed(l.maghrib) && prayed(l.isha), bonus: 10 },
   { id: 'all-habits', title: 'Habit Master', description: 'Complete all 4 habits today', icon: '💪', check: (l) => l.water && l.sleep && l.exercise && l.quran, bonus: 10 },
   { id: 'perfect-score', title: 'Perfect Day', description: 'Score 100/100 today', icon: '💯', check: (l) => l.score >= 100, bonus: 20 },
-  { id: 'fajr-hero', title: 'Fajr Hero', description: 'Start with Fajr prayer', icon: '🌅', check: (l) => l.fajr, bonus: 5 },
+  { id: 'fajr-hero', title: 'Fajr Hero', description: 'Start with Fajr prayer', icon: '🌅', check: (l) => prayed(l.fajr), bonus: 5 },
   { id: 'quran-reader', title: 'Quran Time', description: 'Read Quran today', icon: '📖', check: (l) => l.quran, bonus: 5 },
   { id: 'healthy-body', title: 'Healthy Body', description: 'Drink water and exercise', icon: '🏃', check: (l) => l.water && l.exercise, bonus: 5 },
   { id: 'night-prayer', title: 'Qiyam ul Lail', description: 'Pray Tahajjud tonight', icon: '🌙', check: (l) => l.tahajjud, bonus: 15 },
-  { id: 'three-salah', title: 'Three for Three', description: 'Pray at least 3 salah', icon: '⭐', check: (l) => [l.fajr, l.zuhr, l.asr, l.maghrib, l.isha].filter(Boolean).length >= 3, bonus: 5 },
+  { id: 'three-salah', title: 'Three for Three', description: 'Pray at least 3 salah', icon: '⭐', check: (l) => [l.fajr, l.dhuhr, l.asr, l.maghrib, l.isha].filter((v) => prayed(v)).length >= 3, bonus: 5 },
 ];
 
 export default function DailyChallenge({ log }: DailyChallengeProps) {

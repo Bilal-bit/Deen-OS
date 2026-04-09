@@ -102,7 +102,7 @@ export default function Home() {
                 href="/signup"
                 className="px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-xl transition-colors shadow-lg shadow-primary/20"
               >
-                Get Started Free
+                Get Started 
               </Link>
               <a
                 href="#how-it-works"
@@ -110,20 +110,10 @@ export default function Home() {
               >
                 See How It Works
               </a>
-              <button
-                onClick={handleDemo}
-                disabled={demoLoading}
-                className="px-6 py-3 text-subtext hover:text-primary font-medium rounded-xl transition-colors cursor-pointer disabled:opacity-50"
-              >
-                {demoLoading ? 'Loading...' : 'Try Demo'}
-              </button>
+           
             </motion.div>
 
-            <motion.div variants={fadeUp} custom={4} className="flex items-center gap-6 mt-10 text-sm text-subtext">
-              <span className="flex items-center gap-1.5"><span className="text-primary">✓</span> 100% Free</span>
-              <span className="flex items-center gap-1.5"><span className="text-primary">✓</span> No credit card</span>
-              <span className="flex items-center gap-1.5"><span className="text-primary">✓</span> Private & secure</span>
-            </motion.div>
+       
           </motion.div>
 
           {/* Right: App mockup */}
@@ -372,13 +362,7 @@ export default function Home() {
               >
                 Get Started Free
               </Link>
-              <button
-                onClick={handleDemo}
-                disabled={demoLoading}
-                className="px-8 py-3.5 bg-surface hover:bg-white/5 text-text font-medium rounded-xl border border-white/10 transition-colors cursor-pointer disabled:opacity-50 text-base"
-              >
-                Try Demo
-              </button>
+        
             </motion.div>
           </motion.div>
         </div>
