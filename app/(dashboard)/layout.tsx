@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { useAuthStore } from '@/stores/authStore';
-import { useThemeStore } from '@/stores/themeStore';
 import Sidebar from '@/components/dashboard/Sidebar';
 import Header from '@/components/dashboard/Header';
 import Skeleton from '@/components/ui/Skeleton';
@@ -13,12 +12,10 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const { user, loading, fetchUser } = useAuthStore();
-  const initTheme = useThemeStore((s) => s.initTheme);
 
   useEffect(() => {
     fetchUser();
-    initTheme();
-  }, [fetchUser, initTheme]);
+  }, [fetchUser]);
 
   if (loading) {
     return (

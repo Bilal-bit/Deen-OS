@@ -7,7 +7,6 @@ import { useAuthStore } from '@/stores/authStore';
 import { useSidebarStore } from '@/stores/sidebarStore';
 import { toHijri } from '@/lib/hijri';
 import { format } from 'date-fns';
-import ThemeToggle from '@/components/ui/ThemeToggle';
 import toast from 'react-hot-toast';
 
 const dropdownItems = [
@@ -78,10 +77,6 @@ export default function Header() {
 
       {/* Right side */}
       <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
-        <div className="hidden sm:block">
-          <ThemeToggle />
-        </div>
-
         {/* Profile dropdown */}
         <div className="relative" ref={dropdownRef}>
           <button
@@ -107,12 +102,6 @@ export default function Header() {
               <div className="px-4 py-3 border-b border-white/5">
                 <p className="text-sm font-medium text-text truncate">{user?.name}</p>
                 <p className="text-xs text-subtext truncate">{user?.email}</p>
-              </div>
-
-              {/* Theme toggle - mobile only in dropdown */}
-              <div className="px-4 py-2.5 border-b border-white/5 flex items-center justify-between sm:hidden">
-                <span className="text-sm text-text">Theme</span>
-                <ThemeToggle />
               </div>
 
               <div className="py-1">

@@ -2,18 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/stores/authStore';
-import { useThemeStore } from '@/stores/themeStore';
 import { useStreak } from '@/hooks/useStreak';
 import Card from '@/components/ui/Card';
-import Button from '@/components/ui/Button';
-import ThemeToggle from '@/components/ui/ThemeToggle';
 import LevelProgress from '@/components/gamification/LevelProgress';
 import { getLevelForPoints } from '@/data/badges';
 import toast from 'react-hot-toast';
 
 export default function ProfilePage() {
   const { user, signOut } = useAuthStore();
-  const { language, setLanguage, theme } = useThemeStore();
   const { streak } = useStreak(user?.id);
   const router = useRouter();
 
@@ -107,59 +103,11 @@ export default function ProfilePage() {
         </Card>
       </div>
 
-      {/* Middle: Level + Settings */}
+      {/* Middle: Level + Account */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <LevelProgress totalPoints={totalPoints} />
 
         <div className="space-y-6">
-          {/* Appearance */}
-          <Card>
-            <h3 className="text-sm font-medium text-subtext uppercase tracking-wider mb-4">
-              Appearance
-            </h3>
-            <div className="flex items-center justify-between p-3 bg-surface rounded-xl border border-white/5">
-              <div className="flex items-center gap-3">
-                <span className="text-lg">{theme === 'dark' ? '🌙' : '☀️'}</span>
-                <div>
-                  <p className="text-sm font-medium text-text">Theme</p>
-                  <p className="text-[10px] text-subtext">{theme === 'dark' ? 'Dark mode' : 'Light mode'}</p>
-                </div>
-              </div>
-              <ThemeToggle />
-            </div>
-          </Card>
-
-          {/* Language */}
-          <Card>
-            <h3 className="text-sm font-medium text-subtext uppercase tracking-wider mb-4">
-              Language
-            </h3>
-            <div className="flex gap-3">
-              <button
-                onClick={() => setLanguage('en')}
-                className={`flex-1 p-3 rounded-xl border text-center cursor-pointer transition-all ${
-                  language === 'en'
-                    ? 'bg-primary/10 border-primary/30 text-primary'
-                    : 'bg-surface border-white/5 text-subtext hover:text-text hover:border-white/10'
-                }`}
-              >
-                <p className="text-lg mb-1">🇬🇧</p>
-                <p className="text-sm font-medium">English</p>
-              </button>
-              <button
-                onClick={() => setLanguage('ur')}
-                className={`flex-1 p-3 rounded-xl border text-center cursor-pointer transition-all ${
-                  language === 'ur'
-                    ? 'bg-primary/10 border-primary/30 text-primary'
-                    : 'bg-surface border-white/5 text-subtext hover:text-text hover:border-white/10'
-                }`}
-              >
-                <p className="text-lg mb-1">🇵🇰</p>
-                <p className="text-sm font-medium">اردو</p>
-              </button>
-            </div>
-          </Card>
-
           {/* Account Actions */}
           <Card>
             <h3 className="text-sm font-medium text-subtext uppercase tracking-wider mb-4">
