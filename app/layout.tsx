@@ -10,12 +10,40 @@ const geistSans = Geist({
 
 export const viewport: Viewport = {
   themeColor: "#10B981",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: "Deen OS — Islamic Lifestyle Tracker",
-  description: "Track your Islamic lifestyle habits, prayers, Quran, and grow spiritually with Deen OS",
+  title: "Deen OS — Islamic Prayer & Habit Tracker",
+  description:
+    "Track your 5 daily prayers, build Islamic habits, and grow your Akhirah Score. Your personal Islamic lifestyle operating system.",
   manifest: "/manifest.json",
+  keywords: ["islamic tracker", "prayer tracker", "salah tracker", "muslim app", "quran tracker", "islamic habits", "akhirah score", "deen os"],
+  authors: [{ name: "Deen OS" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Deen OS",
+    title: "Deen OS — Islamic Prayer & Habit Tracker",
+    description:
+      "Track your 5 daily prayers, build Islamic habits, and grow your Akhirah Score. Your personal Islamic lifestyle operating system.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Deen OS — Islamic Lifestyle Tracker",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deen OS — Islamic Prayer & Habit Tracker",
+    description:
+      "Track your 5 daily prayers, build Islamic habits, and grow your Akhirah Score.",
+    images: ["/og-image.png"],
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
